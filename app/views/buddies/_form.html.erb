@@ -1,0 +1,41 @@
+<%= form_with(model: buddy) do |form| %>
+  <% if buddy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(buddy.errors.count, "error") %> prohibited this buddy from being saved:</h2>
+
+      <ul>
+        <% buddy.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.text_field :first_name, class: "form-control", placeholder:"first_name" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_field :last_name, class: "form-control", placeholder:"last_name" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_field :email, class: "form-control", placeholder:"email"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.text_field :phone, class: "form-control", placeholder:"phone" %>
+  </div>
+
+  <div class="field form-group">
+   <%= form.text_field :twitter, class: "form-control", placeholder:"twitter"%>
+  </div>
+    <div class="field form-group">
+   <%= form.number_field :user_id, id: :buddy_user_id, class: "form-control", value:current_user.id , type: :hidden%>
+  </div>
+  
+  <br/>
+  <div class="actions form-group">
+    <%= form.submit class:'btn btn-secondary' %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Editing Buddy</h1>
+<br/>
+<%= render 'form', buddy: @buddy %>
+<br/>
+<%= link_to 'Show', @buddy, class:"btn btn-secondary" %> 
+<%= link_to 'Delete', @buddy, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%= link_to 'Back', buddies_path, class:"btn btn-dark" %>
+

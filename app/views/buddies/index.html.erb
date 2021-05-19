@@ -1,0 +1,38 @@
+<% if user_signed_in? %>
+<table class="table table-striped table-hover table-bordered" >
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Twitter</th>
+      <th>User Id</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+   
+    <% @buddies.each do |buddy| %>
+    
+     <% if buddy.user == current_user %>
+      <tr>
+        <td><%= link_to buddy.first_name + ' ' + buddy.last_name, buddy %></td>
+        <td><%= buddy.email %></td>
+        <td><%= buddy.phone %></td>
+        <td><%= buddy.twitter %></td>
+        <td><%= buddy.user_id %></td>
+        <td><%= link_to 'Delete', buddy, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm' %></td>
+      </tr>
+     <% end%>  
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Buddy', new_buddy_path, class:"btn btn-secondary" %>
+<% else %>
+<h1>Buddies</h1>
+<p>Store all your friends details in one place for life</p>
+<% end %>
